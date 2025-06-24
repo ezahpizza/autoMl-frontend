@@ -1,0 +1,101 @@
+
+import { motion, easeOut } from 'framer-motion';
+
+const Footer = () => {
+  const footerItems = [
+    { number: '4', text: 'ABOUT ensoML' },
+    { number: '5', text: 'ABOUT THE DEV' },
+    { number: '6', text: 'CONTACT' },
+    { number: '7', text: 'TERMS' },
+    { number: '8', text: 'PRIVACY POLICY' }
+  ];
+
+  const containerVariants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    },
+    hidden: {}
+  };
+
+  const itemVariants = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "tween" as const,
+        ease: easeOut 
+      }
+    },
+    hidden: {
+      y: 120,
+      opacity: 0
+    }
+  };
+
+  return (
+    <footer className="absolute bottom-0 right-0 w-full md:w-auto px-6 py-10">
+      <motion.div
+        className="w-full max-w-4xl ml-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-200px" }}
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-right">
+          {/* Column 1 */}
+          <div className="space-y-6">
+            {[4, 5, 6].map((num) => {
+              const item = footerItems.find(i => i.number === num.toString());
+              return (
+                <motion.div
+                  key={item?.number}
+                  variants={itemVariants}
+                  className="flex flex-col items-end font-fira-code"
+                >
+                  <span className="text-3xl md:text-5xl font-bold text-pumpkin-orange">
+                    {item?.number}
+                  </span>
+                  <a
+                    href="#"
+                    className="text-xl md:text-3xl text-white hover:text-rose-pink transition-colors duration-200"
+                  >
+                    {item?.text}
+                  </a>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-6">
+            {[7, 8].map((num) => {
+              const item = footerItems.find(i => i.number === num.toString());
+              return (
+                <motion.div
+                  key={item?.number}
+                  variants={itemVariants}
+                  className="flex flex-col items-end font-fira-code"
+                >
+                  <span className="text-3xl md:text-5xl font-bold text-pumpkin-orange">
+                    {item?.number}
+                  </span>
+                  <a
+                    href="#"
+                    className="text-xl md:text-3xl text-white hover:text-rose-pink transition-colors duration-200"
+                  >
+                    {item?.text}
+                  </a>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </motion.div>
+    </footer>
+  );
+};
+
+export default Footer;
