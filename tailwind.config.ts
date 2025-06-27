@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			translate: {
+				'101': '101%',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -80,6 +83,10 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
+				marquee: {
+				'from': { transform: 'translateX(0%)' },
+				'to': { transform: 'translateX(-50%)' }
+				},
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -128,6 +135,7 @@ export default {
 				}
 			},
 			animation: {
+				'marquee': 'marquee 15s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'spin-in': 'spin-in 1.5s ease-out',
@@ -136,5 +144,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require('@nauverse/tailwind-dot-grid-backgrounds')],
 } satisfies Config;

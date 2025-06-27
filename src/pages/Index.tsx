@@ -1,6 +1,6 @@
-import { useRef } from 'react';
-import { motion} from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import  React, { useRef, useEffect } from 'react';
+import { motion, } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import TypewriterText from '../components/TypewriterText';
 import testimonials from '../data/TestimonialsData';
 import images from '../data/MasonryData';
@@ -15,8 +15,13 @@ import { VscHome, VscAccount, VscSignIn, VscSignOut } from 'react-icons/vsc';
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import Footer from '../components/Footer';
 
-const Index = () => {
+const Index: React.FC = () => {
   const navigate = useNavigate();
+  
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]); 
 
   const { isSignedIn } = useUser();
   const signInRef = useRef<HTMLButtonElement>(null);
@@ -40,9 +45,9 @@ const Index = () => {
   ];
 
   const demoItems = [
-  { link: '#', text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
-  { link: '#', text: 'Machine Learning', image: '/images/ml.webp' },
-  { link: '#', text: 'Model Flow', image: '/images/mlflow.webp' }
+  { link: "/dashboard/eda", text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
+  { link: "/dashboard/eda", text: 'Machine Learning', image: '/images/ml.webp' },
+  { link: "/dashboard/eda", text: 'Model Flow', image: '/images/mlflow.webp' }
 ];
 
   return (
@@ -57,7 +62,7 @@ const Index = () => {
         </SignOutButton>
       </div>
       
-      {/* Dock */}
+      {/* Dock - Fixed positioning */}
       <motion.div
             className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
             initial={{ y: 200, opacity: 0 }}
