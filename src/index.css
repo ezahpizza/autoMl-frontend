@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-html, body {
-  @apply bg-persian-indigo text-white overflow-x-hidden;
-}
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;

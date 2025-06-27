@@ -3,11 +3,11 @@ import { motion, easeOut } from 'framer-motion';
 
 const Footer = () => {
   const footerItems = [
-    { number: '4', text: 'ABOUT ensoML' },
-    { number: '5', text: 'ABOUT THE DEV' },
-    { number: '6', text: 'CONTACT' },
-    { number: '7', text: 'TERMS' },
-    { number: '8', text: 'PRIVACY POLICY' }
+    { number: '1', text: 'ABOUT ensoML' },
+    { number: '2', text: 'ABOUT THE DEV' },
+    { number: '3', text: 'CONTACT' },
+    { number: '4', text: 'TERMS' },
+    { number: '5', text: 'PRIVACY POLICY' }
   ];
 
   const containerVariants = {
@@ -36,7 +36,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="absolute bottom-0 right-0 w-full md:w-auto px-6 py-10">
+    <footer className="absolute bottom-20 md:bottom-8 right-0 w-full md:w-auto px-6 py-10">
       <motion.div
         className="w-full max-w-4xl ml-auto"
         variants={containerVariants}
@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-right">
           {/* Column 1 */}
           <div className="space-y-6">
-            {[4, 5, 6].map((num) => {
+            {[1, 2, 3].map((num) => {
               const item = footerItems.find(i => i.number === num.toString());
               return (
                 <motion.div
@@ -71,7 +71,7 @@ const Footer = () => {
 
           {/* Column 2 */}
           <div className="space-y-6">
-            {[7, 8].map((num) => {
+            {[4, 5].map((num) => {
               const item = footerItems.find(i => i.number === num.toString());
               return (
                 <motion.div

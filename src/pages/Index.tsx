@@ -1,51 +1,85 @@
-import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { motion} from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import TypewriterText from '../components/TypewriterText';
-import Navigation from '../components/Navigation';
-import ImageCarousel from '../components/ImageCarousel';
+import testimonials from '../data/TestimonialsData';
+import images from '../data/MasonryData';
+
 import TestimonialCard from '../components/TestimonialCard';
+import Dock from '../components/ui/Dock';
+import Masonry from '../components/ui/Masonry';
+import FlowingMenu from '../components/ui/FlowingMenu'
+
+import { SignInButton, SignOutButton, useUser } from '@clerk/clerk-react';
+import { VscHome, VscAccount, VscSignIn, VscSignOut } from 'react-icons/vsc';
+import { IoIosInformationCircleOutline } from "react-icons/io";
 import Footer from '../components/Footer';
 
 const Index = () => {
-  const [showNavigation, setShowNavigation] = useState(true);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const { scrollY } = useScroll();
+  const navigate = useNavigate();
+
+  const { isSignedIn } = useUser();
+  const signInRef = useRef<HTMLButtonElement>(null);
+  const signOutRef = useRef<HTMLButtonElement>(null);
   
-  const navigationOpacity = useTransform(
-    scrollY,
-    [0, 200],
-    [1, 0]
-  );
-
-  useEffect(() => {
-    const unsubscribe = scrollY.onChange((latest) => {
-      const progress = latest / window.innerHeight;
-      setScrollProgress(progress);
-      
-      setShowNavigation(latest < window.innerHeight);
-    });
-    return () => unsubscribe();
-  }, [scrollY]);
-
-  const testimonials = [
+  const items = [
+    { icon: <VscHome size={18} />, label: 'Home', onClick: () => navigate('/') },
+    { icon: <IoIosInformationCircleOutline size={23} />, label: 'Learn More', onClick: () => navigate('/learn') },
+    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => navigate('/profile') },
     {
-      quote: "ensoML transformed how we approach data science. The intuitive interface made complex ML accessible to our entire team.",
-      author: "Sarah Chen, Data Scientist"
+      icon: isSignedIn ? <VscSignOut size={18} /> : <VscSignIn size={18} />,
+      label: isSignedIn ? 'Sign Out' : 'Sign In',
+      onClick: () => {
+        if (isSignedIn) {
+          signOutRef.current?.click();
+        } else {
+          signInRef.current?.click();
+        }
+      },
     },
-    {
-      quote: "Finally, a platform that embodies the zen of simplicity while delivering powerful results. Machine learning shouldn't be overwhelming.",
-      author: "Marcus Rodriguez, Product Manager"
-    },
-    {
-      quote: "The philosophy behind ensoML resonates deeply. It's not just about the technology, it's about harmony between human and artificial intelligence.",
-      author: "Dr. Aisha Patel, AI Researcher"
-    }
   ];
 
+  const demoItems = [
+  { link: '#', text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
+  { link: '#', text: 'Machine Learning', image: '/images/ml.webp' },
+  { link: '#', text: 'Model Flow', image: '/images/mlflow.webp' }
+];
+
   return (
-    <div className="relative bg-persian-indigo overflow-hidden max-w-screen">
+    <div className="relative overflow-hidden max-w-screen">
+      {/* Hidden Clerk buttons */}
+      <div style={{ display: 'none' }}>
+        <SignInButton mode="modal">
+          <button ref={signInRef} />
+        </SignInButton>
+        <SignOutButton>
+          <button ref={signOutRef} />
+        </SignOutButton>
+      </div>
       
-     {/* Hero Section */}
+      {/* Dock */}
+      <motion.div
+            className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+              delay: 0.5
+            }}
+          >
+        <div className="pointer-events-auto">
+          <Dock 
+            className={`bg-rose-pink`}
+            items={items}
+            panelHeight={90}
+            baseItemSize={60}
+            magnification={90}
+          />
+        </div>
+      </motion.div>
+      
+      {/* Hero Section */}
       <section className="min-h-screen bg-almond-white relative z-40 overflow-visible">
         {/* Logo */}
         <div className="absolute top-12 w-full flex justify-center">
@@ -64,7 +98,7 @@ const Index = () => {
         </div>
 
         {/* Typewriter Text */}
-        <div className="absolute bottom-16 md:bottom-2 left-8">
+        <div className="absolute bottom-32 md:bottom-2 left-8">
           <TypewriterText
             text={`AI_FOR → \n (EVERYONE) \n //SIMPLY.`}
             delay={1500}
@@ -74,24 +108,22 @@ const Index = () => {
 
         {/* Enso Circle */}
         <div className="absolute z-50 -bottom-16 -right-12 md:-bottom-64 md:-right-32 pointer-events-none">
-            <motion.img
-              src="/images/enso-cluster.svg"
-              alt="Enso Circle"
-              className="w-64 h-64 md:w-[50vw] md:h-[50vw]"
-              initial={{ x: 2400, rotate: 360, opacity: 0 }}
-              animate={{ x: 0, rotate: 0, opacity: 1 }}
-              transition={{
-                duration: 1.8,
-                ease: "easeOut"
-              }}
-            />
-          </div>
-
-        <Navigation visible={showNavigation} scrollProgress={scrollProgress} />
+          <motion.img
+            src="/images/enso-cluster.svg"
+            alt="Enso Circle"
+            className="w-64 h-64 md:w-[50vw] md:h-[50vw]"
+            initial={{ x: 2400, rotate: 360, opacity: 0 }}
+            animate={{ x: 0, rotate: 0, opacity: 1 }}
+            transition={{
+              duration: 1.8,
+              ease: "easeOut"
+            }}
+          />
+        </div>
       </section>
 
       {/* Learn More Section */}
-      <section className="py-24 px-8 md:px-16 lg:px-24 z-10 relative">
+      <section className="bg-persian-indigo py-24 px-8 z-10 relative">
         <motion.div
           className="max-w-4xl"
           initial={{ x: -100, opacity: 0 }}
@@ -108,14 +140,32 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Image Carousel */}
-      <section className="mt-24 overflow-visible">
-          <ImageCarousel />
+      <section className="bg-persian-indigo py-2 md:py-24">
+        <div className="h-[250px] relative">
+          <FlowingMenu items={demoItems} />
+        </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="mt-24 py-24 px-8">  
+      {/* Image gallery */}
+      <section className="bg-persian-indigo py-12 px-8 md:py-24 relative z-10">
+          <div className="relative w-full">
+            <Masonry
+              items={images}
+              ease="power3.out"
+              duration={0.6}
+              stagger={0.05}
+              animateFrom="bottom"
+              scaleOnHover={true}
+              hoverScale={0.95}
+              blurToFocus={true}
+              colorShiftOnHover={false}
+            />
+          </div>
+        </section>
 
+
+      {/* Testimonials Section */}
+      <section className="bg-persian-indigo mt-18 md:mt-0 py-16 md:pb-64 px-8">
         <motion.h2
           className="font-fira-code text-4xl md:text-6xl font-bold text-white text-center mb-16"
           initial={{ y: 50, opacity: 0 }}
@@ -126,7 +176,6 @@ const Index = () => {
           What The ML Monks Say
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:max-w-7xl md:max-h-[25vw] mx-auto items-stretch">
-
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={index}
@@ -139,7 +188,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <section className="relative min-h-[60vh] pt-24 px-8 pb-40">
+      <section className=" bg-persian-indigo relative min-h-[60vh] pt-24 px-8 pb-40">
         <Footer />
       </section>
     </div>
