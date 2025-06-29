@@ -1,33 +1,90 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
+import DockNav from '@/components/DockNav';
+import EdaHistory from '@/components/main/EdaHistory';
+import ModelHistory from '@/components/main/ModelHistory';
+import CardStack from '@/components/main/CardStack';
+import ServiceCards from '@/components/main/ServiceCards';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
+
   return (
     <>
       <SignedOut>
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <div className="min-h-screen bg-persian-indigo">
-          <motion.div
-            className="container mx-auto px-8 py-24"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="font-biorhyme-expanded text-5xl md:text-7xl font-bold text-pumpkin-orange mb-8">
-              Welcome to ensoML
+        <div className="select-none min-h-screen bg-persian-indigo relative pb-20 overflow-hidden">
+          <DockNav />
+
+          {/* Main content */}
+          <div className="container mx-auto px-4 md:px-8 pt-12 space-y-8">
+            {/* Header Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+            <h1 className="font-biorhyme-expanded text-5xl font-bold text-pumpkin-orange mb-8">
+              ensoML
             </h1>
             <div className="max-w-4xl">
-              <p className="font-biorhyme text-xl md:text-2xl text-white leading-relaxed mb-8">
-                Your no-code AutoML platform is ready. Begin your journey toward data enlightenment.
-              </p>
-              <p className="font-biorhyme text-lg text-white/80 leading-relaxed">
-                Coming soon: Your intuitive dashboard for machine learning excellence.
+              <p className="font-biorhyme text-xl text-almond-white leading-relaxed mb-8">
+                The numbers do tell us something. Though mostly we have no idea what.
               </p>
             </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Responsive grid layout */}
+            <div className="flex flex-col md:flex-row gap-6">
+              {/* Left Section (Main) */}
+              <div className="w-full md:w-2/3 space-y-6">
+
+                <motion.div
+                  className="text-almond-white text-2xl font-fira-code"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    At your service, Master Analyst:
+                </motion.div>
+
+                <ServiceCards />
+
+                <motion.div
+                  className="text-almond-white text-2xl font-fira-code"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  Your activity
+                </motion.div>
+
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  <div className="h-auto overflow-hidden scroll-hidden"><EdaHistory /></div>
+                  <div className="h-auto overflow-hidden scroll-hidden"><ModelHistory /></div>
+
+                  </motion.div>
+              </div>
+
+              {/* Right Section (Sidebar) */}
+              <motion.div
+                className="hidden sm:block w-full md:w-1/3 text-almond-white text-lg h-full"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                    <CardStack />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </SignedIn>
     </>

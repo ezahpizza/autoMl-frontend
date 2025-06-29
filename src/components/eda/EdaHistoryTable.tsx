@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
@@ -36,11 +37,11 @@ const EdaHistoryTable = () => {
 
   if (error) {
     return (
-      <Card className="bg-white border-red-200">
+      <Card className="bg-white">
         <CardContent className="flex items-center justify-center py-8">
           <div className="text-center space-y-2">
-            <AlertCircle className="h-8 w-8 text-red-500 mx-auto" />
-            <p className="font-fira-code text-red-600">Failed to load history</p>
+            <AlertCircle className="h-8 w-8 text-red mx-auto" />
+            <p className="font-fira-code text-red">Failed to load history</p>
           </div>
         </CardContent>
       </Card>
@@ -55,8 +56,8 @@ const EdaHistoryTable = () => {
           <h3 className="font-biorhyme text-xl text-persian-indigo mb-2">
             No History :(
           </h3>
-          <p className="font-fira-code text-persian-indigo/60">
-            Upload your first CSV file to generate an EDA report :)
+          <p className="font-fira-code text-persian-indigo/70">
+            Upload a CSV file to get a report :)
           </p>
         </CardContent>
       </Card>
@@ -104,7 +105,7 @@ const EdaHistoryTable = () => {
                               className={
                                 item.status === 'completed' 
                                   ? 'bg-green-100 text-green-800 hover:bg-green-100'
-                                  : 'bg-red-100 text-red-800 hover:bg-red-100'
+                                  : 'bg-red text-red hover:bg-red/80'
                               }
                             >
                               {item.status}

@@ -1,7 +1,7 @@
-import  React, { useRef, useEffect } from 'react';
+import  React, { useRef, useEffect, useMemo  } from 'react';
 import { motion, } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
-import TypewriterText from '../components/TypewriterText';
+import DecryptedText from '../components/DecryptedText';
 import testimonials from '../data/TestimonialsData';
 import images from '../data/MasonryData';
 
@@ -44,14 +44,14 @@ const Index: React.FC = () => {
     },
   ];
 
-  const demoItems = [
-      { link: "/app", text: 'Get Started', image: '/images/mlflow.webp' },
-      { link: "/dashboard/eda", text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
-      { link: "/dashboard/model", text: 'Machine Learning', image: '/images/ml.webp' }
-];
+  const demoItems = useMemo(() => [
+    { link: "/app", text: isSignedIn ? 'dashboard' : 'Get Started', image: '/images/mlflow.webp' },
+    { link: "/dashboard/eda", text: 'reports', image: '/images/edaflow.webp' },
+    { link: "/dashboard/model", text: 'models', image: '/images/ml.webp' }
+  ], [isSignedIn]);
 
   return (
-    <div className="relative overflow-hidden max-w-screen">
+    <div className="select-none relative overflow-hidden max-w-screen">
       {/* Hidden Clerk buttons */}
       <div style={{ display: 'none' }}>
         <SignInButton mode="modal">
@@ -102,13 +102,17 @@ const Index: React.FC = () => {
           </motion.h1>
         </div>
 
-        {/* Typewriter Text */}
+        {/* decrypted Text */}
         <div className="absolute bottom-32 md:bottom-2 left-8">
-          <TypewriterText
-            text={`AI_FOR → \n (EVERYONE) \n //SIMPLY.`}
-            delay={1500}
-            speed={50}
-          />
+          <DecryptedText
+              text={`AI_FOR → \n (EVERYONE) \n //SIMPLY.`}
+              sequential={true}
+              speed={60}
+              className="revealed font-fira-code bottom-2 text-4xl md:text-[3vw] font-semibold text-persian-indigo leading-tight whitespace-pre-line"
+              animateOn="view"
+              parentClassName="all-letters"
+              encryptedClassName="encrypted"
+              />
         </div>
 
         {/* Enso Circle */}

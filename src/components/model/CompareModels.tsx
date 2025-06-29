@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useModelList, useCompareModels } from '@/hooks/useModelFeatures';
 import LoadingGallery from '@/components/ui/LoadingGallery';
+import { AlertCircle } from 'lucide-react';
 import { MdOutlineSwapCalls } from "react-icons/md";
 import ModelComparisonModal from './ModelComparisonModal';
 
@@ -72,7 +73,7 @@ const CompareModels: React.FC = () => {
         </Card>
       );
     }
-
+    
   if (models.length < 2) {
     return (
       <Card className="bg-white">
