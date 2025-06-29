@@ -40,11 +40,11 @@ const EdaDashboard: React.FC = () => {
                       transition={{ duration: 0.6, ease: "easeOut" }}
                       className="text-center mb-12"
                     >
-                          <h1 className="font-biorhyme font-black text-4xl md:text-6xl text-rose-pink mb-4">
+                          <h1 className="font-biorhyme font-black text-4xl md:text-6xl text-pumpkin-orange mb-4">
                                 Analysis Playground
                           </h1>
                           <p className="font-biorhyme text-almond-white/70 text-lg max-w-2xl mx-auto">
-                              Elusive data insights? We're here to help :) (no you don't need PowerBI)
+                              Elusive Data Insights? We Make Your Data Talk. :) <br/> (No Therapy or PowerBI Needed)
                           </p>
                     </motion.div>
                     

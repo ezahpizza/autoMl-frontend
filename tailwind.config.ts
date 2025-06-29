@@ -70,6 +70,7 @@ export default {
 				'almond-white': '#E8D8C9',
 				'pumpkin-orange': '#F3701E',
 				'persian-indigo': '#2D1C7F',
+				'red': '#FF2D51',
 				'rose-pink': '#FF5B8E'
 			},
 			fontFamily: {

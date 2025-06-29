@@ -45,9 +45,9 @@ const Index: React.FC = () => {
   ];
 
   const demoItems = [
-  { link: "/dashboard/eda", text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
-  { link: "/dashboard/eda", text: 'Machine Learning', image: '/images/ml.webp' },
-  { link: "/dashboard/eda", text: 'Model Flow', image: '/images/mlflow.webp' }
+      { link: "/app", text: 'Get Started', image: '/images/mlflow.webp' },
+      { link: "/dashboard/eda", text: 'Exploratory Data Analysis', image: '/images/edaflow.webp' },
+      { link: "/dashboard/model", text: 'Machine Learning', image: '/images/ml.webp' }
 ];
 
   return (

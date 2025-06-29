@@ -20,7 +20,6 @@ export interface EDAReport {
 }
 
 export interface EDAHistoryItem {
-  id: string;
   filename: string;
   dataset_name: string;
   dataset_rows: number;

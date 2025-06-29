@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Learn from "./pages/Learn";
 import Dashboard from "./pages/Dashboard";
+import ModelDashboard from "./pages/dashboard/ModelDashboard";
 import EdaDashboard from "./pages/dashboard/EdaDashboard";
 import NotFound from "./pages/NotFound";
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/app" element={<Dashboard />} />
+          <Route path="/dashboard/model" element={<ModelDashboard />} />
           <Route path="/dashboard/eda" element={<EdaDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

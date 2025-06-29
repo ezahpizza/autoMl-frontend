@@ -11,12 +11,14 @@ if (!PUBLISHABLE_KEY) {
 }
 
 createRoot(document.getElementById("root")!).render(
-  <ClerkProvider publishableKey={PUBLISHABLE_KEY }
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}
+      clerkJSVersion="5.56.0-snapshot.v20250312225817"
+
       appearance={{
-                layout: {
-                  unsafe_disableDevelopmentModeWarnings: true,
-                },
-          }}>
+            layout: {
+              unsafe_disableDevelopmentModeWarnings: true,
+            },
+      }}>
     <App />
   </ClerkProvider>
 );
