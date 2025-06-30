@@ -10,7 +10,7 @@ const ModelTabs = () => {
   return (
     <div className="flex justify-center">
         <Tabs value={tab} onValueChange={setTab} className="w-full md:w-[60%]">
-            <TabsList className="h-auto grid w-full grid-cols-2 bg-white border border-persian-indigo/20">
+            <TabsList className="h-auto grid w-full grid-cols-2 bg-almond-white border border-persian-indigo/20">
                 <TabsTrigger value="models" className="text-md font-fira-code data-[state=active]:bg-rose-pink data-[state=active]:text-white"> 
                     <GiArtificialIntelligence className="h-4 w-4 mr-2"/>
                     Models</TabsTrigger>

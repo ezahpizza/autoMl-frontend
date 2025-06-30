@@ -50,34 +50,34 @@ const SandboxModal = ({ isOpen, onClose, filename }: SandboxModalProps) => {
     );
   };
 
-const renderMetrics = () => {
-  if (metricsLoading) return <div className="text-xs text-center py-2">Loading metrics...</div>;
-  if (!metricsData || !metricsData.metrics) return <div className="text-xs text-center py-2">No metrics available.</div>;
+    const renderMetrics = () => {
+      if (metricsLoading) return <div className="text-xs text-center py-2">Loading metrics...</div>;
+      if (!metricsData || !metricsData.metrics) return <div className="text-xs text-center py-2">No metrics available.</div>;
 
-  return (
-    <div className="mb-3 w-full">
-      <div className="font-medium text-persian-indigo mb-2 text-sm">Model Metrics</div>
-      <div className="w-full">
-        <table className="w-full text-xs md:text-sm border rounded-md table-fixed">
-          <tbody>
-            {Object.entries(metricsData.metrics)
-              .filter(([k, v]) => typeof v !== 'object' || Array.isArray(v))
-              .map(([key, value]) => (
-                <tr key={key} className="hover:bg-gray-50">
-                  <td className="px-2 py-1 font-medium border-b border-gray-200 bg-gray-50 align-top w-1/3 break-words">
-                    {key}
-                  </td>
-                  <td className="px-2 py-1 border-b border-gray-100 break-words">
-                    {Array.isArray(value) ? value.join(', ') : String(value)}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
+      return (
+        <div className="mb-3 w-full">
+          <div className="font-medium text-persian-indigo mb-2 text-sm">Model Metrics</div>
+          <div className="w-full">
+            <table className="w-full text-xs md:text-sm border rounded-md table-fixed">
+              <tbody>
+                {Object.entries(metricsData.metrics)
+                  .filter(([k, v]) => typeof v !== 'object' || Array.isArray(v))
+                  .map(([key, value]) => (
+                    <tr key={key} className="hover:bg-gray-50">
+                      <td className="px-2 py-1 font-medium border-b border-gray-200 bg-gray-50 align-top w-1/3 break-words">
+                        {key}
+                      </td>
+                      <td className="px-2 py-1 border-b border-gray-100 break-words">
+                        {Array.isArray(value) ? value.join(', ') : String(value)}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    };
 
 
     const renderPrediction = () => {
@@ -110,7 +110,7 @@ const renderMetrics = () => {
 
     return (
       <Dialog open={isOpen} onOpenChange={onClose}>
-        <DialogContent className="w-[95vw] max-w-5xl max-h-[90vh] overflow-y-auto bg-white">
+        <DialogContent className="w-[95vw] max-w-5xl max-h-[90vh] overflow-y-auto scrollbar-custom bg-almond-white">
           <DialogHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
             <DialogTitle className="font-biorhyme text-persian-indigo text-sm md:text-base">
               Prediction Sandbox

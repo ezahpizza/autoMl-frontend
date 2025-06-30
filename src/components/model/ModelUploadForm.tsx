@@ -211,7 +211,7 @@ const ModelUploadForm = () => {
               <Button
                 type="submit"
                 disabled={!selectedFile || !csvColumns.length || trainModel.isPending}
-                className="w-auto bg-pumpkin-orange hover:bg-pumpkin-orange/90 text-white font-biorhyme"
+                className="w-auto bg-rose-pink hover:bg-pumpkin-orange/90 text-white font-biorhyme"
               >
                 Train
               </Button>

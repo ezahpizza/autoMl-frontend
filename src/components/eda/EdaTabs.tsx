@@ -12,7 +12,7 @@ const EdaTabs = () => {
     return (
         <div className="flex justify-center">
             <Tabs defaultValue="reports" className="w-full md:w-[60%]">
-                <TabsList className="h-auto grid w-full grid-cols-2 bg-white border border-persian-indigo/20">
+                <TabsList className="h-auto grid w-full grid-cols-2 bg-almond-white border border-persian-indigo/20">
                     <TabsTrigger 
                         value="reports" 
                         className="text-md font-fira-code data-[state=active]:bg-pumpkin-orange data-[state=active]:text-white"

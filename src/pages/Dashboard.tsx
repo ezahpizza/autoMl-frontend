@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
 import DockNav from '@/components/DockNav';
@@ -7,6 +6,7 @@ import EdaHistory from '@/components/main/EdaHistory';
 import ModelHistory from '@/components/main/ModelHistory';
 import CardStack from '@/components/main/CardStack';
 import ServiceCards from '@/components/main/ServiceCards';
+import MobileCarousel from '@/components/main/MobileCarousel';
 
 const Dashboard= () => {
 
@@ -76,12 +76,27 @@ const Dashboard= () => {
 
               {/* Right Section (Sidebar) */}
               <motion.div
-                className="hidden sm:block w-full md:w-1/3 text-almond-white text-lg h-full"
+                className="hidden sm:block w-1/3 text-almond-white text-lg h-full"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                     <CardStack />
+              </motion.div>
+
+              <motion.div
+                className="block sm:hidden flex justify-center relative h-[300px] w-full text-almond-white text-lg h-full"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                    <MobileCarousel 
+                      baseWidth={300}
+                      autoplay={true}
+                      autoplayDelay={3000}
+                      pauseOnHover={true}
+                      loop={true}
+                      round={false}/>
               </motion.div>
             </div>
           </div>

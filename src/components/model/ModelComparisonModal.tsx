@@ -12,7 +12,7 @@ const ModelComparisonModal = ({ isOpen, onClose, comparison }: ModelComparisonMo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white px-4 py-6">
+      <DialogContent className="w-full max-w-4xl max-h-[90vh] overflow-y-auto scrollbar-custom bg-almond-white px-4 py-6">
         <DialogHeader className="pb-4">
           <DialogTitle className="font-biorhyme text-persian-indigo text-lg md:text-xl">
             Model Comparison Results

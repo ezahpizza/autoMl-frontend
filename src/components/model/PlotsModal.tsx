@@ -15,7 +15,7 @@ const PlotsModal = ({ isOpen, onClose, filename }: PlotsModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-7xl max-h-[90vh] bg-white">
+      <DialogContent className="w-[95vw] max-w-7xl max-h-[90vh] bg-almond-white">
         <DialogHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <DialogTitle className="font-biorhyme text-persian-indigo text-lg md:text-xl">
             Model Plots
