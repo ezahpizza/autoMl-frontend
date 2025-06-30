@@ -29,7 +29,7 @@ const uploadSchema = z.object({
 
 type UploadFormData = z.infer<typeof uploadSchema>;
 
-const ModelUploadForm: React.FC = () => {
+const ModelUploadForm = () => {
   const [csvColumns, setCsvColumns] = useState<string[]>([]);
   const [previewRows, setPreviewRows] = useState<any[]>([]);
   const [rowCount, setRowCount] = useState<number>(0);

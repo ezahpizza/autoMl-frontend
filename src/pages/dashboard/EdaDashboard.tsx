@@ -9,55 +9,54 @@ import EdaTabs from '@/components/eda/EdaTabs';
 import DockNav from '@/components/DockNav';
 
 const EdaDashboard: React.FC = () => {
-  const { isLoaded } = useUser();
+    const { isLoaded } = useUser();
 
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]); 
-  
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]); 
 
-  if (!isLoaded) {
+
+    if (!isLoaded) {
+        return (
+            <div className="min-h-screen bg-persian-indigo flex items-center justify-center">
+                <LoadingGallery/>
+            </div>
+        );
+    }
+
     return (
-      <div className="min-h-screen bg-persian-indigo flex items-center justify-center">
-            <LoadingGallery/>
-      </div>
-    );
-  }
-
-  return (
         <>
-          <SignedOut>
-              <RedirectToSignIn />
-          </SignedOut>
-          <SignedIn>
+            <SignedOut>
+                <RedirectToSignIn />
+            </SignedOut>
+            <SignedIn>
                 <div className="select-none min-h-screen bg-persian-indigo overflow-x-hidden">
-                  <DockNav/>
-                  <div className="container mx-auto px-4 py-8 pb-32 max-w-7x">
+                    <DockNav/>
+                    <div className="container mx-auto px-4 py-8 pb-32 max-w-7x">
                     <motion.div
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="text-center mb-12"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="text-center mb-12"
                     >
-                          <h1 className="font-biorhyme font-black text-4xl md:text-6xl text-pumpkin-orange mb-4">
-                                Analysis Playground
-                          </h1>
-                          <p className="font-biorhyme text-almond-white/70 text-lg max-w-2xl mx-auto">
-                              Elusive Data Insights? We Make Your Data Talk. :) <br/> (No Therapy or PowerBI Needed)
-                          </p>
+                        <h1 className="font-biorhyme font-black text-4xl md:text-6xl text-pumpkin-orange mb-4">
+                            Analysis Playground
+                        </h1>
+                        <p className="font-biorhyme text-almond-white/70 text-lg max-w-2xl mx-auto">
+                            Elusive Data Insights? We Make Your Data Talk. :) <br/> (No Therapy or PowerBI Needed)
+                        </p>
                     </motion.div>
-                    
+
                     <div className="space-y-8">
                         <EdaUploadForm />
                         <EdaTabs />
                     </div>
-                  </div>
+                    </div>
                 </div>
-          </SignedIn>
-
-    </>
-  );
+            </SignedIn>
+        </>
+    );
 };
 
 export default EdaDashboard;

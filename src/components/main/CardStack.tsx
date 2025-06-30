@@ -1,9 +1,7 @@
-
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardSwap, { Card } from '@/components/ui/CardSwap'
 
-const CardStack: React.FC = () => {
+const CardStack = () => {
 
     const navigate = useNavigate();
 

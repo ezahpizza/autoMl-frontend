@@ -8,7 +8,7 @@ import StarBorder from '@/components/ui/StarBorder';
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { BarChart3 } from 'lucide-react';
 
-const ServiceCards: React.FC = () => {
+const ServiceCards = () => {
 
     return (
         <motion.div

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { ModelComparisonResult } from '@/types/model';
 
@@ -8,7 +7,7 @@ interface ModelComparisonModalProps {
   comparison: ModelComparisonResult | null;
 }
 
-const ModelComparisonModal: React.FC<ModelComparisonModalProps> = ({ isOpen, onClose, comparison }) => {
+const ModelComparisonModal = ({ isOpen, onClose, comparison }: ModelComparisonModalProps) => {
   if (!comparison) return null;
 
   return (

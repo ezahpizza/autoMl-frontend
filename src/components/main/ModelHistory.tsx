@@ -7,7 +7,7 @@ import { useModelList } from '@/hooks/useModelFeatures';
 import LoadingGallery from '@/components/ui/LoadingGallery';
 import { MdOutlineSwapCalls } from "react-icons/md";
 
-const ModelHistory: React.FC = () => {
+const ModelHistory = () => {
   const { data, isLoading, error } = useModelList();
   const models = data?.models || [];
 

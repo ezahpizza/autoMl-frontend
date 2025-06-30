@@ -6,11 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useModelList, useCompareModels } from '@/hooks/useModelFeatures';
 import LoadingGallery from '@/components/ui/LoadingGallery';
-import { AlertCircle } from 'lucide-react';
 import { MdOutlineSwapCalls } from "react-icons/md";
 import ModelComparisonModal from './ModelComparisonModal';
 
-const CompareModels: React.FC = () => {
+const CompareModels = () => {
   const { data, isLoading, error } = useModelList();
   const compareModels = useCompareModels();
   const [compareBase, setCompareBase] = useState<string | null>(null);
@@ -168,7 +167,6 @@ const CompareModels: React.FC = () => {
         {/* Compare Selection Dialog */}
         <Dialog open={compareDialogOpen} onOpenChange={setCompareDialogOpen}>
           <DialogContent className="w-[85vw] rounded-lg max-w-sm mx-auto md:max-w-lg overflow-y-auto bg-persian-indigo">
-
             <DialogHeader>
               <DialogTitle className="font-biorhyme text-almond-white flex items-center justify-between">
                 Compare Models

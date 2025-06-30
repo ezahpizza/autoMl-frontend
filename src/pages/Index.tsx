@@ -1,54 +1,33 @@
-import  React, { useRef, useEffect, useMemo  } from 'react';
-import { motion, } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { SignInButton, SignOutButton, useUser } from '@clerk/clerk-react';
+import { motion } from 'framer-motion';
 import DecryptedText from '../components/DecryptedText';
+import DockNav from '../components/DockNav';
+import TestimonialCard from '../components/TestimonialCard';
+import Footer from '../components/Footer';
+import Masonry from '../components/ui/Masonry';
+import FlowingMenu from '../components/ui/FlowingMenu';
 import testimonials from '../data/TestimonialsData';
 import images from '../data/MasonryData';
 
-import TestimonialCard from '../components/TestimonialCard';
-import Dock from '../components/ui/Dock';
-import Masonry from '../components/ui/Masonry';
-import FlowingMenu from '../components/ui/FlowingMenu'
 
-import { SignInButton, SignOutButton, useUser } from '@clerk/clerk-react';
-import { VscHome, VscAccount, VscSignIn, VscSignOut } from 'react-icons/vsc';
-import { IoIosInformationCircleOutline } from "react-icons/io";
-import Footer from '../components/Footer';
-
-const Index: React.FC = () => {
-  const navigate = useNavigate();
-  
+const Index = () => {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]); 
-
   const { isSignedIn } = useUser();
+
   const signInRef = useRef<HTMLButtonElement>(null);
   const signOutRef = useRef<HTMLButtonElement>(null);
-  
-  const items = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: () => navigate('/') },
-    { icon: <IoIosInformationCircleOutline size={23} />, label: 'Learn More', onClick: () => navigate('/learn') },
-    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => navigate('/profile') },
-    {
-      icon: isSignedIn ? <VscSignOut size={18} /> : <VscSignIn size={18} />,
-      label: isSignedIn ? 'Sign Out' : 'Sign In',
-      onClick: () => {
-        if (isSignedIn) {
-          signOutRef.current?.click();
-        } else {
-          signInRef.current?.click();
-        }
-      },
-    },
-  ];
 
-  const demoItems = useMemo(() => [
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const demoItems = [
     { link: "/app", text: isSignedIn ? 'dashboard' : 'Get Started', image: '/images/mlflow.webp' },
     { link: "/dashboard/eda", text: 'reports', image: '/images/edaflow.webp' },
     { link: "/dashboard/model", text: 'models', image: '/images/ml.webp' }
-  ], [isSignedIn]);
+  ];
 
   return (
     <div className="select-none relative overflow-hidden max-w-screen">
@@ -61,28 +40,13 @@ const Index: React.FC = () => {
           <button ref={signOutRef} />
         </SignOutButton>
       </div>
-      
-      {/* Dock - Fixed positioning */}
-      <motion.div
-            className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
-            initial={{ y: 200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 1.2,
-              ease: "easeOut",
-              delay: 0.5
-            }}
-          >
-        <div className="pointer-events-auto">
-          <Dock 
-            className={`bg-rose-pink`}
-            items={items}
-            panelHeight={90}
-            baseItemSize={60}
-            magnification={90}
-          />
-        </div>
-      </motion.div>
+
+      {/* Dock Navigation Bar */}
+      <DockNav
+        isSignedIn={isSignedIn}
+        signInRef={signInRef}
+        signOutRef={signOutRef}
+      />
       
       {/* Hero Section */}
       <section className="min-h-screen bg-almond-white relative z-40 overflow-visible">

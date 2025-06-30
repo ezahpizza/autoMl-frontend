@@ -20,7 +20,7 @@ import { edaApi } from '@/lib/edaApi';
 import EdaViewModal from './EdaViewModal';
 import LoadingGallery from '@/components/ui/LoadingGallery';
 
-const EdaReportCard: React.FC = () => {
+const EdaReportCard = () => {
   
   const { data, isLoading, error } = useEdaReports();
   const deleteEDA = useDeleteEDA();

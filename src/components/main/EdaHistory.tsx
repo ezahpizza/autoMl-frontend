@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { useEdaHistory } from '@/hooks/useEdaReports';
 import LoadingGallery from '@/components/ui/LoadingGallery';
 
-const EdaHistoryTable: React.FC = () => {
+const EdaHistoryTable = () => {
   const { data: historyData, isLoading, error } = useEdaHistory();
   const history = historyData?.history || [];
 

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ModelReportCard from './ModelReportCard';
 import CompareModels from './CompareModels';
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { MdOutlineSwapCalls } from "react-icons/md";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
-const ModelTabs: React.FC = () => {
+const ModelTabs = () => {
   const [tab, setTab] = useState('models');
   return (
     <div className="flex justify-center">

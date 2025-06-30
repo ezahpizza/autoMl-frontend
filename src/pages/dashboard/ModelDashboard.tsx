@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
@@ -7,7 +7,7 @@ import ModelTabs from '@/components/model/ModelTabs';
 import LoadingGallery from '@/components/ui/LoadingGallery';
 import DockNav from '@/components/DockNav';
 
-const ModelDashboard: React.FC = () => {
+const ModelDashboard = () => {
   const { isLoaded } = useUser();
   const { pathname } = useLocation();
 

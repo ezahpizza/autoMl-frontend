@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { GiArtificialIntelligence } from "react-icons/gi";
@@ -22,7 +22,7 @@ import PlotsModal from './PlotsModal';
 import SandboxModal from './SandboxModal';
 import { modelApi } from '@/lib/ModelApi';
 
-const ModelReportCard: React.FC = () => {
+const ModelReportCard = () => {
   const { data, isLoading, error } = useModelList();
 
   const deleteModel = useDeleteModel();

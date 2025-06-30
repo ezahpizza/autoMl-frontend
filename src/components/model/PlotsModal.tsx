@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useModelPlots } from '@/hooks/useModelFeatures';
 import { Download } from 'lucide-react';
@@ -10,7 +9,7 @@ interface PlotsModalProps {
   filename: string | null;
 }
 
-const PlotsModal: React.FC<PlotsModalProps> = ({ isOpen, onClose, filename }) => {
+const PlotsModal = ({ isOpen, onClose, filename }: PlotsModalProps) => {
   const { data, isLoading, error } = useModelPlots(filename);
   const plots = data?.plots || [];
 

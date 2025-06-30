@@ -8,7 +8,7 @@ import ModelHistory from '@/components/main/ModelHistory';
 import CardStack from '@/components/main/CardStack';
 import ServiceCards from '@/components/main/ServiceCards';
 
-const Dashboard: React.FC = () => {
+const Dashboard= () => {
 
   return (
     <>
