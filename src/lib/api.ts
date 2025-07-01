@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-// Base API instance - update this URL to match your backend
+// Backend API instance
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
   headers: {
@@ -9,13 +9,13 @@ export const api = axios.create({
   },
 });
 
-// Request interceptor for adding auth headers if needed
+// Request interceptor 
 api.interceptors.request.use((config) => {
   // Add any auth headers here if needed
   return config;
 });
 
-// Response interceptor for error handling
+// Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
