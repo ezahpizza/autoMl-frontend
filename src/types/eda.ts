@@ -31,12 +31,6 @@ export interface EDAHistoryItem {
   view_url: string | null;
 }
 
-export interface UserInitRequest {
-  user_id: string;
-  email: string;
-  name?: string;
-}
-
 export interface APIResponse<T> {
   success: boolean;
   message: string;

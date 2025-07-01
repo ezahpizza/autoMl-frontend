@@ -24,7 +24,7 @@ const Index = () => {
   }, [pathname]);
 
   const demoItems = [
-    { link: "/app", text: isSignedIn ? 'dashboard' : 'Get Started', image: '/images/mlflow.webp' },
+    { link: "/dashboard", text: isSignedIn ? 'dashboard' : 'Get Started', image: '/images/mlflow.webp' },
     { link: "/dashboard/eda", text: 'reports', image: '/images/edaflow.webp' },
     { link: "/dashboard/model", text: 'models', image: '/images/ml.webp' }
   ];
@@ -79,8 +79,7 @@ const Index = () => {
               />
         </div>
 
-        {/* Enso Circle */}
-        <div className="absolute z-50 -bottom-16 -right-12 md:-bottom-64 md:-right-32 pointer-events-none">
+       <div className="absolute z-50 -bottom-16 -right-12 md:-bottom-64 md:-right-32 pointer-events-none">
           <motion.img
             src="/images/enso-cluster.svg"
             alt="Enso Circle"

@@ -5,6 +5,8 @@ import DockNav from '@/components/DockNav';
 import EdaHistory from '@/components/main/EdaHistory';
 import ModelHistory from '@/components/main/ModelHistory';
 import CardStack from '@/components/main/CardStack';
+import CardStackData from '@/data/CardStackData'
+import MobileCarouselData from '@/data/MobileCarouselData'
 import ServiceCards from '@/components/main/ServiceCards';
 import MobileCarousel from '@/components/main/MobileCarousel';
 
@@ -81,7 +83,7 @@ const Dashboard= () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                    <CardStack />
+                    <CardStack cards={CardStackData}/>
               </motion.div>
 
               <motion.div
@@ -91,12 +93,14 @@ const Dashboard= () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                     <MobileCarousel 
+                      items={MobileCarouselData}
                       baseWidth={300}
                       autoplay={true}
                       autoplayDelay={3000}
                       pauseOnHover={true}
                       loop={true}
-                      round={false}/>
+                      round={false}
+                      backgroundColor='bg-gradient-to-r from-pumpkin-orange to-rose-pink'/>
               </motion.div>
             </div>
           </div>

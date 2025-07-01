@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
+import { motion, PanInfo, useMotionValue, useTransform, Transition } from "framer-motion";
 import React, { JSX } from "react";
 
 // replace icons with your own if needed
@@ -10,14 +10,16 @@ import {
   FiLayers,
   FiLayout,
 } from "react-icons/fi";
+
 export interface CarouselItem {
   title: string;
   description: string;
   id: number;
   icon: React.ReactNode;
+  backgroundImage?: string;
 }
 
-export interface CarouselProps {
+export interface MobileCarouselProps {
   items?: CarouselItem[];
   baseWidth?: number;
   autoplay?: boolean;
@@ -25,6 +27,7 @@ export interface CarouselProps {
   pauseOnHover?: boolean;
   loop?: boolean;
   round?: boolean;
+  backgroundColor?: string;
 }
 
 const DEFAULT_ITEMS: CarouselItem[] = [
@@ -63,7 +66,6 @@ const DEFAULT_ITEMS: CarouselItem[] = [
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
-const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 export default function MobileCarousel({
   items = DEFAULT_ITEMS,
@@ -73,7 +75,9 @@ export default function MobileCarousel({
   pauseOnHover = false,
   loop = false,
   round = false,
-}: CarouselProps): JSX.Element {
+  backgroundColor, 
+}: MobileCarouselProps): JSX.Element {
+
   const containerPadding = 16;
   const itemWidth = baseWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
@@ -124,7 +128,9 @@ export default function MobileCarousel({
     pauseOnHover,
   ]);
 
-  const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
+  const effectiveTransition: Transition = isResetting
+  ? { duration: 0 }
+  : { type: "spring", stiffness: 300, damping: 30 };
 
   const handleAnimationComplete = () => {
     if (loop && currentIndex === carouselItems.length - 1) {
@@ -172,12 +178,13 @@ export default function MobileCarousel({
         round
           ? "rounded-full border border-white"
           : "rounded-[24px] border border-[#222]"
-      }`}
+      } ${backgroundColor ?? ''}`}
       style={{
         width: `${baseWidth}px`,
         ...(round && { height: `${baseWidth}px` }),
       }}
     >
+
       <motion.div
         className="flex"
         drag="x"
@@ -203,33 +210,39 @@ export default function MobileCarousel({
           const outputRange = [90, 0, -90];
           const rotateY = useTransform(x, range, outputRange, { clamp: false });
           return (
-            <motion.div
-              key={index}
-              className={`relative shrink-0 flex flex-col ${
-                round
-                  ? "items-center justify-center text-center bg-[#060010] border-0"
-                  : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
-              } overflow-hidden cursor-grab active:cursor-grabbing`}
-              style={{
-                width: itemWidth,
-                height: round ? itemWidth : "100%",
-                rotateY: rotateY,
-                ...(round && { borderRadius: "50%" }),
-              }}
-              transition={effectiveTransition}
-            >
-              <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-                  {item.icon}
-                </span>
-              </div>
-              <div className="p-5">
-                <div className="mb-1 font-black text-lg text-white">
-                  {item.title}
-                </div>
-                <p className="text-sm text-white">{item.description}</p>
-              </div>
-            </motion.div>
+              <motion.div
+                  key={index}
+                  className={`relative shrink-0 flex flex-col ${
+                    round
+                      ? "items-center justify-center text-center border-0"
+                      : "items-start justify-between border border-[#222] rounded-[12px]"
+                  } overflow-hidden cursor-grab active:cursor-grabbing ${round ? '' : 'p-4'}`} // 🔥 add padding here for outer card
+                  style={{
+                    width: itemWidth,
+                    height: round ? itemWidth : "100%",
+                    rotateY: rotateY,
+                    ...(round && { borderRadius: "50%" }),
+                    ...(item.backgroundImage && {
+                      backgroundImage: `url(${item.backgroundImage})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }),
+                  }}
+                  transition={effectiveTransition}
+                >
+                  <div className="w-full h-full flex flex-col justify-between gap-4 p-4 bg-persian-indigo/60 rounded-lg"> {/* 🔥 padding inside content */}
+                    <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
+                      {item.icon}
+                    </span>
+                    <div>
+                      <div className="mb-1 font-black text-lg text-white">
+                        {item.title}
+                      </div>
+                      <p className="text-sm text-white">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+
           );
         })}
       </motion.div>

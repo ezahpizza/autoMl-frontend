@@ -18,7 +18,7 @@ const ServiceCards = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
         >
             <div className="text-almond-white text-lg">
-                <SpotlightCard className="custom-spotlight-card bg-gradient-to-r from-pumpkin-orange to-persian-indigo" spotlightColor="rgba(243, 112, 30, 1)">
+                <SpotlightCard className="custom-spotlight-card bg-gradient-to-r from-pumpkin-orange to-persian-indigo" spotlightColor="rgba(45, 28, 127, 1)">
                     <Card className="bg-pumpkin-orange">
                     <CardContent className="text-center py-2">
                         <BarChart3 className="h-12 w-12 text-persian-indigo mx-auto mb-6" />

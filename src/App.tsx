@@ -9,6 +9,7 @@ import Learn from "./pages/Learn";
 import Dashboard from "./pages/Dashboard";
 import ModelDashboard from "./pages/dashboard/ModelDashboard";
 import EdaDashboard from "./pages/dashboard/EdaDashboard";
+import UserProfilePage from "./pages/UserProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,8 +22,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/app" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/model" element={<ModelDashboard />} />
           <Route path="/dashboard/eda" element={<EdaDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

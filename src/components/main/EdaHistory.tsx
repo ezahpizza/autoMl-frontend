@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { FileText, AlertCircle, History, ChevronDown } from 'lucide-react';
