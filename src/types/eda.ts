@@ -1,4 +1,3 @@
-
 export interface EDAResponse {
   filename: string;
   report_url: string;

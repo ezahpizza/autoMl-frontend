@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -10,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PixelCard from '../ui/PixelCard';
 import LoadingGallery  from '@/components/ui/LoadingGallery';
-
 import { useGenerateEDA } from '@/hooks/useEdaReports';
 
 

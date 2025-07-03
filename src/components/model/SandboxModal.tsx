@@ -1,4 +1,3 @@
-// SandboxModal.tsx
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useModelMetrics, useModelPredict } from '@/hooks/useModelFeatures';
 import { useUser } from '@clerk/clerk-react';

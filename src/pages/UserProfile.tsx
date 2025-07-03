@@ -10,7 +10,6 @@ import { useModelList } from '@/hooks/useModelFeatures';
 import { motion } from 'framer-motion';
 import LoadingGallery from '@/components/ui/LoadingGallery';
 
-
 const UserProfilePage = () => {
 
     useEffect(() => {

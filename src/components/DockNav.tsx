@@ -1,4 +1,3 @@
-// DockNav.tsx
 import { VscHome, VscAccount, VscSignIn, VscSignOut } from 'react-icons/vsc';
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { useMemo, useCallback } from 'react';

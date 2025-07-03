@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUser, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
@@ -8,7 +8,7 @@ import LoadingGallery  from '@/components/ui/LoadingGallery';
 import EdaTabs from '@/components/eda/EdaTabs';
 import DockNav from '@/components/DockNav';
 
-const EdaDashboard: React.FC = () => {
+const EdaDashboard = () => {
     const { isLoaded } = useUser();
 
     const { pathname } = useLocation();
