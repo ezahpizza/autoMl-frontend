@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import DockNav from '@/components/DockNav';
 import UserProfileButton from '@/components/user/UserProfileButton';
 import DeleteUserDataButton from '@/components/user/DeleteUserDataButton';
@@ -8,11 +9,14 @@ import { useEdaHistory } from '@/hooks/useEdaReports';
 import { useModelList } from '@/hooks/useModelFeatures';
 import { motion } from 'framer-motion';
 import LoadingGallery from '@/components/ui/LoadingGallery';
-import { IoMdClose } from "react-icons/io";
 
-const dashed = 'border-2 border-white border-dashed';
 
 const UserProfilePage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { user } = useUser();
     if (!user) 
         return  (

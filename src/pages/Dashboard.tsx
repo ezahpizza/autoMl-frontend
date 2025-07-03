@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
 import DockNav from '@/components/DockNav';
@@ -11,6 +11,9 @@ import ServiceCards from '@/components/main/ServiceCards';
 import MobileCarousel from '@/components/main/MobileCarousel';
 
 const Dashboard= () => {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <>

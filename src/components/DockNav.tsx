@@ -17,7 +17,7 @@ const DockNav = ({ isSignedIn, signInRef, signOutRef }: DockNavProps) => {
   const { pathname } = useLocation();
 
   const goHome = useCallback(() => navigate('/'), [navigate]);
-  const goLearn = useCallback(() => navigate('/learn'), [navigate]);
+  const goabout = useCallback(() => navigate('/about'), [navigate]);
   const goProfile = useCallback(() => navigate('/profile'), [navigate]);
 
   const handleAuthClick = useCallback(() => {
@@ -30,7 +30,7 @@ const DockNav = ({ isSignedIn, signInRef, signOutRef }: DockNavProps) => {
 
   const icons = useMemo(() => ({
     home: <VscHome size={18} />,
-    learn: <IoIosInformationCircleOutline size={23} />,
+    about: <IoIosInformationCircleOutline size={23} />,
     profile: <VscAccount size={18} />,
     signIn: <VscSignIn size={18} />,
     signOut: <VscSignOut size={18} />,
@@ -38,9 +38,9 @@ const DockNav = ({ isSignedIn, signInRef, signOutRef }: DockNavProps) => {
 
   const baseItems = useMemo(() => ([
     { icon: icons.home, label: 'Home', onClick: goHome },
-    { icon: icons.learn, label: 'Learn More', onClick: goLearn },
+    { icon: icons.about, label: 'Learn More', onClick: goabout },
     { icon: icons.profile, label: 'Profile', onClick: goProfile },
-  ]), [icons, goHome, goLearn, goProfile]);
+  ]), [icons, goHome, goabout, goProfile]);
 
   const homeItems = useMemo(() => ([
     ...baseItems,

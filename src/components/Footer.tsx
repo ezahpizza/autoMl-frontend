@@ -1,11 +1,12 @@
 
 import { motion, easeOut } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const footerItems = [
-    { number: '1', text: 'ABOUT ensoML' },
-    { number: '2', text: 'ABOUT THE DEV' },
-    { number: '3', text: 'CONTACT' },
+    { number: '1', text: 'ABOUT ensoML', route: '/about'},
+    { number: '2', text: 'ABOUT THE DEV', route: '/aboutdev'}, 
+    { number: '3', text: 'CONTACT', route: '/contact' },
     { number: '4', text: 'TERMS' },
     { number: '5', text: 'PRIVACY POLICY' }
   ];
@@ -44,8 +45,7 @@ const Footer = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-200px" }}
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-right">
-          {/* Column 1 */}
+        <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-right">
           <div className="space-y-6">
             {[1, 2, 3].map((num) => {
               const item = footerItems.find(i => i.number === num.toString());
@@ -58,36 +58,12 @@ const Footer = () => {
                   <span className="text-3xl md:text-5xl font-bold text-pumpkin-orange">
                     {item?.number}
                   </span>
-                  <a
-                    href="#"
+                  <Link 
+                    to={item?.route}
                     className="text-xl md:text-3xl text-white hover:text-rose-pink transition-colors duration-200"
                   >
                     {item?.text}
-                  </a>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Column 2 */}
-          <div className="space-y-6">
-            {[4, 5].map((num) => {
-              const item = footerItems.find(i => i.number === num.toString());
-              return (
-                <motion.div
-                  key={item?.number}
-                  variants={itemVariants}
-                  className="flex flex-col items-end font-fira-code"
-                >
-                  <span className="text-3xl md:text-5xl font-bold text-pumpkin-orange">
-                    {item?.number}
-                  </span>
-                  <a
-                    href="#"
-                    className="text-xl md:text-3xl text-white hover:text-rose-pink transition-colors duration-200"
-                  >
-                    {item?.text}
-                  </a>
+                  </Link>
                 </motion.div>
               );
             })}

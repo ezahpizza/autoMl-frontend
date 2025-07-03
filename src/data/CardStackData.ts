@@ -2,19 +2,19 @@ import { CardStackItem } from '@/components/main/CardStack';
 
 const CardStackData: CardStackItem[] = [
   {
-    title: "Machine Learning",
-    description: "Explore models and pipelines to power intelligent applications.",
+    title: "No notebooks, no code. We FlyPNB here.",
+    description: "Growth is the only env you need to be at. We've got the models.",
     imageSrc: "/images/mlflowProfile.webp",
     route: "/dashboard/model",
   },
   {
-    title: "Data Analysis",
-    description: "Visualize, clean, and summarize your datasets with ease.",
+    title: "Sayonara Seaborn.",
+    description: "Get an interactive and extensive report of your data in 3 clicks.",
     imageSrc: "/images/edaflowProfile.webp",
     route: "/dashboard/eda",
   },
   {
-    title: "Your Complete ML Solution",
+    title: "ensoMl ensemble",
     description: "An all-in-one platform from raw data to deployable models.",
     imageSrc: "/images/ensoProfile.webp",
     route: "/",
